@@ -1,0 +1,77 @@
+<!--
+  @author NEBDAOUI Anass
+  @email nebdaoui.anass@gmail.com
+  @create date 2023-03-25 02:28:43
+  @modify date 2023-03-25 14:52:19
+-->
+
+<template>
+  <lightning-card title='Account Table' icon-name="account" >
+    <div class="filter_search" style="padding-left: 10px;padding-right: 10px;">
+
+      <lightning-input class="filter_input" type="text" label="Filter Name" onchange={handleInputChangeName}></lightning-input>
+      <lightning-input class="filter_input" type="text" label="Filter ASAIDPRS" onchange={handleInputChangeAsa}></lightning-input>
+      <lightning-input class="filter_input" type="text" label="Filter BIL_ID" onchange={handleInputChangeBil}></lightning-input>
+      <lightning-input class="filter_input" type="text" label="Filter RC" onchange={handleInputChangeRc}></lightning-input>
+      <lightning-input class="filter_input" type="text" label="Filter ICE" onchange={handleInputChangeIce}></lightning-input>
+      <lightning-combobox
+            class="filter_input"
+            name="progress"
+            label="Record Type"
+            value={value}
+            placeholder="Filter by Record Type"
+            options={options}
+            onchange={handleInputChangeRt} >
+      </lightning-combobox><br/>
+    </div>
+
+      <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+          <thead>
+              <tr class="slds-line-height_reset">
+                  <th class="" scope="col">
+                      <div class="slds-truncate" title="Account Name">Name</div>
+                  </th>
+                  <th class="" scope="col">
+                      <div class="slds-truncate" title="ASAIDPRS__C">ASAIDPRS</div>
+                  </th>
+                  <th class="" scope="col">
+                      <div class="slds-truncate" title="BIL_ID__C">BIL_ID</div>
+                  </th>
+                  <th class="" scope="col">
+                      <div class="slds-truncate" title="RC__C">RC</div>
+                  </th>
+                  <th class="" scope="col">
+                      <div class="slds-truncate" title="ICE__C">ICE</div>
+                  </th>
+                  <th class="" scope="col">
+                      <div class="slds-truncate" title="">Recordtype</div>
+                  </th>
+              </tr>
+          </thead>
+          <tbody>
+              <template for:each={filteredAccounts} for:item ='account'>
+                  <tr class="" key = {account.Id}>
+                      <td data-label="Account Name">
+                          <div class="slds-cell-wrap">{account.Name}</div>
+                      </td>
+                      <td data-label="ASAIDPRS">
+                          <div class="slds-cell-wrap">{account.ASAIDPRS__c}</div>
+                      </td>
+                      <td data-label="BIL_ID">
+                          <div class="slds-cell-wrap">{account.BIL_ID__c}</div>
+                      </td>
+                      <td data-label="RC">
+                          <div class="slds-cell-wrap">{account.RC__c}</div>
+                      </td>
+                      <td data-label="ICE">
+                          <div class="slds-cell-wrap">{account.ICE__c}</div>
+                      </td>
+                      <td data-label="Recordtype">
+                          <div class="slds-cell-wrap">{account.RecordType.Name}</div>
+                      </td>
+                  </tr>
+              </template>
+          </tbody>
+      </table>
+  </lightning-card>
+</template>

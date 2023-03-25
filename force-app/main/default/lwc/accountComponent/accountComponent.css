@@ -1,0 +1,9 @@
+.filter_input{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.filter_search{
+    display: flex;
+    margin-bottom: 30px;
+}
